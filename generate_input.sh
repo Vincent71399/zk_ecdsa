@@ -7,7 +7,7 @@ output_file="Prover.toml"
 extract_value() {
     local key=$1
     # Extract the part inside quotes after the equals sign
-    grep "^$key\s*=" "$input_file" | sed -E 's/^[^=]+= *"(.*)"/\1/'
+    grep "^$key\s*=" "$input_file" | sed -E 's/^[^=]+= *"(.*)"/\1/' | tr -d '\t\r\n '
 }
 
 # Convert hex string (without 0x) to quoted decimal byte array
