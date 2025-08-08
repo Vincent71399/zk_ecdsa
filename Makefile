@@ -4,4 +4,9 @@ generate_proof :; bb prove -b ./target/zk_ecdsa.json -w ./target/zk_ecdsa.gz -o 
 write_vk :; bb write_vk -b ./target/zk_ecdsa.json -o ./target
 verify :;  bb verify -k ./target/vk -p ./target/proof
 
-# generate input
+# generate solidity verifier contract
+generate_verifier :
+	@nargo compile
+	@bb write_vk --oracle_hash keccak -b ./target/zk_ecdsa.json -o ./target
+	@bb write_solidity_verifier -k ./target/vk -o ./target/zk_ecdsa_verifier.sol
+

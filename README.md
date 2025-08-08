@@ -16,3 +16,6 @@ can be generated with cast commands:
 
 4. Run the following command to verify the proof:
    `make verify_proof`
+
+5. Run the following command to generate solidity verification contract:
+   `make generate_verifier`
